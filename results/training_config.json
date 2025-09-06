@@ -1,0 +1,26 @@
+{
+  "model": {
+    "architecture": "UNet++",
+    "encoder": "efficientnet-b5",
+    "image_size": 640,
+    "total_params": 31910081,
+    "trainable_params": 31910081
+  },
+  "training": {
+    "epochs": 50,
+    "batch_size": 2,
+    "learning_rate": 0.0001,
+    "weight_decay": 1e-05,
+    "loss_function": "combined",
+    "scheduler": "plateau",
+    "best_epoch": 6,
+    "best_dice": 0.8944519109196133,
+    "training_time_hours": 0.6277232253551484
+  },
+  "data": {
+    "dataset_path": "Dataset_no_preprocessing",
+    "train_samples": 2064,
+    "valid_samples": 360,
+    "test_samples": 280
+  }
+}

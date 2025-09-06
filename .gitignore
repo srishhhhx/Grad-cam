@@ -1,0 +1,41 @@
+# Model files
+models/
+*.pth
+*.pt
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Env & editor files
+.env
+venv/
+.venv/
+.DS_Store
+.vscode/
+
+# Logs
+*.log
+
+# Node.js
+node_modules/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Testing
+.pytest_cache/
+.coverage
+
+# Generated reports and outputs
+backend/reports/
+backend/uploads/
+logs_*/
+integrated_gradients_results/
+
+# Python specific
+backend/.dependencies_installed
+
+# OS specific
+UNET-model/.DS_Store

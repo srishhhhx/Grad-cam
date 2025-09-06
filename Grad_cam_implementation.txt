@@ -1,0 +1,138 @@
+Here’s a publication-level implementation of Grad-CAM for a U-Net++ model with an EfficientNet-B5 encoder, tailored for use in medical segmentation (e.g., fibroid detection from ultrasound).
+
+⸻
+
+📄 Robust Grad-CAM Document for U-Net++ + EfficientNet-B5
+
+✅ Overview
+
+This document describes how to implement Grad-CAM for a U-Net++ segmentation model using an EfficientNet-B5 encoder. The method produces class-specific, pixel-wise visual explanations, useful for validating model decisions in clinical or research settings.
+
+⸻
+
+🧠 1. Model Architecture Assumption
+	•	Base: U-Net++
+	•	Encoder: EfficientNet-B5
+	•	Decoder: Standard nested skip-connected decoder
+	•	Output: 1-channel mask for binary segmentation
+
+You may be using a library like segmentation_models.pytorch (SMP):
+
+pip install segmentation-models-pytorch
+
+
+⸻
+
+📦 2. Required Libraries
+
+pip install torch torchvision opencv-python grad-cam matplotlib
+
+
+⸻
+
+🧪 3. Code: Grad-CAM for Segmentation (U-Net++)
+
+import torch
+import numpy as np
+import matplotlib.pyplot as plt
+from pytorch_grad_cam import GradCAM
+from pytorch_grad_cam.utils.image import show_cam_on_image
+from pytorch_grad_cam.utils.model_targets import SemanticSegmentationTarget
+
+def apply_unetpp_gradcam(model, input_tensor, mask_tensor, target_layer, target_class_id=1):
+    """
+    Apply Grad-CAM to a U-Net++ model with EfficientNet-B5 encoder.
+    
+    Args:
+        model: Trained U-Net++ model with EfficientNet-B5 backbone.
+        input_tensor: Input image tensor, shape [1, 3, H, W]
+        mask_tensor: Binary segmentation mask, shape [1, H, W]
+        target_layer: Typically the last encoder block (EfficientNet layer)
+        target_class_id: Class index (default = 1 for binary)
+    
+    Returns:
+        overlay: Image with Grad-CAM heatmap overlaid
+    """
+    model.eval()
+    
+    # Normalize for visualization
+    image_np = input_tensor.squeeze().permute(1, 2, 0).detach().cpu().numpy()
+    image_np = (image_np - np.min(image_np)) / (np.max(image_np) - np.min(image_np))
+    
+    cam = GradCAM(model=model, target_layers=[target_layer], use_cuda=torch.cuda.is_available())
+    
+    targets = [SemanticSegmentationTarget(category=target_class_id, mask=mask_tensor.squeeze(0))]
+    
+    grayscale_cam = cam(input_tensor=input_tensor, targets=targets)[0]
+    
+    overlay = show_cam_on_image(image_np, grayscale_cam, use_rgb=True)
+    
+    return overlay
+
+
+⸻
+
+🧩 4. Choosing the Correct Layer
+
+For EfficientNet-B5, use:
+
+target_layer = model.encoder._blocks[-1]  # Last MBConv block in EfficientNet-B5
+
+In segmentation_models_pytorch:
+
+import segmentation_models_pytorch as smp
+
+model = smp.UnetPlusPlus(
+    encoder_name="efficientnet-b5",
+    in_channels=3,
+    classes=1,
+    encoder_weights="imagenet"
+)
+
+
+⸻
+
+🧪 5. Example Inference
+
+# Assume:
+# input_tensor: torch.Size([1, 3, 256, 256])
+# mask_tensor: torch.Size([1, 256, 256])
+
+overlay = apply_unetpp_gradcam(
+    model=model,
+    input_tensor=input_tensor,
+    mask_tensor=mask_tensor,
+    target_layer=model.encoder._blocks[-1],
+    target_class_id=1
+)
+
+plt.imshow(overlay)
+plt.axis("off")
+plt.title("Grad-CAM on U-Net++ + EfficientNet-B5")
+plt.show()
+
+
+⸻
+
+📊 6. Optional Enhancements
+
+Feature	Code/Tool
+Grad-CAM++	GradCAMPlusPlus from pytorch-grad-cam
+Multiple layers	Run Grad-CAM on different encoder stages
+SmoothGrad or Integrated Gradients	Use captum for pixel-level explanations
+Batch inference	Loop over batch inputs for CAM overlay
+Export results	cv2.imwrite() for saving overlays
+
+
+⸻
+
+📚 7. Suggested Citations
+
+If you’re using this in a paper:
+	•	Grad-CAM: Selvaraju et al., “Grad-CAM: Visual Explanations from Deep Networks via Gradient-based Localization”
+	•	SMP: “Segmentation Models PyTorch”
+	•	EfficientNet: Tan & Le, “EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks”
+
+⸻
+
+Would you like me to generate a downloadable PDF version of this document, or package this into a Colab notebook ready for testing?
