@@ -11,6 +11,7 @@ import uuid
 import threading
 import concurrent.futures
 import io
+import base64
 from datetime import datetime
 from typing import Optional, List, Dict, Any
 from pathlib import Path
@@ -839,7 +840,7 @@ async def run_gradcam_only_analysis(analysis_id: str, prediction_id: str):
         print(f"Error in threaded GradCAM analysis: {e}")
         # Fallback to mock analysis
         try:
-            result = create_mock_gradcam_analysis()
+            result = create_mock_xai_analysis()
             xai_analyses_db[analysis_id].update(
                 {
                     "status": "completed",
@@ -877,7 +878,7 @@ async def run_integrated_gradients_only_analysis(analysis_id: str, prediction_id
         print(f"Error in threaded Integrated Gradients analysis: {e}")
         # Fallback to mock analysis
         try:
-            result = create_mock_integrated_gradients_analysis()
+            result = create_mock_xai_analysis()
             xai_analyses_db[analysis_id].update(
                 {
                     "status": "completed",
@@ -1233,7 +1234,7 @@ async def get_prediction_overlay_image(prediction_id: str):
     async with aiofiles.open(file_path, "rb") as f:
         image_bytes = await f.read()
     image_data = dict(image_data)  # Make a copy to avoid mutating global
-    image_data["image_data"] = image_bytes
+    image_data["image_data"] = base64.b64encode(image_bytes).decode("utf-8")
     # ---------------------------------------------------------------
 
     # Generate overlay image using the PDF generator's method

@@ -1,8 +1,5 @@
 # Model files
-models/
-*.pth
-*.pt
-
+model/best_model.pth
 # Python cache
 __pycache__/
 *.pyc
@@ -31,6 +28,7 @@ node_modules/
 # Generated reports and outputs
 backend/reports/
 backend/uploads/
+backend/results/
 logs_*/
 integrated_gradients_results/
 
@@ -39,3 +37,7 @@ backend/.dependencies_installed
 
 # OS specific
 UNET-model/.DS_Store
+
+py-files/
+md-files/
+

@@ -174,6 +174,169 @@ export interface MedicalReport {
   };
   generatedAt: Date;
   generatedBy: string; // doctor ID
+  pdf: {
+    structure: PDFReportStructure;
+    formatting: PDFReportFormatting;
+    status: PDFGenerationStatus;
+    preview?: {
+      dataUrl: string;
+      pages: string[];
+    };
+  };
+}
+
+// Enhanced PDF Report Types
+export interface PDFStyles {
+  text: {
+    fontSize: number;
+    fontFamily: string;
+    color: string;
+    lineHeight: number;
+    alignment: 'left' | 'center' | 'right' | 'justify';
+  };
+  section: {
+    marginTop: number;
+    marginBottom: number;
+    padding: number;
+    backgroundColor?: string;
+  };
+  table: {
+    fontSize: number;
+    cellPadding: number;
+    borderColor: string;
+    headerBackground: string;
+  };
+}
+
+export interface PDFContentBlock {
+  type: 'text' | 'table' | 'image' | 'chart' | 'separator';
+  content: string | string[] | Record<string, any>;
+  style: Partial<PDFStyles>;
+  metadata?: {
+    id: string;
+    className?: string;
+    renderHint?: string;
+  };
+}
+
+export interface PDFPreviewState {
+  loading: boolean;
+  error?: string;
+  currentPage: number;
+  totalPages: number;
+  scale: number;
+  rotation: number;
+}
+
+// PDF Report Types
+export interface PDFReportFormatting {
+  fonts: {
+    header: string;
+    body: string;
+    emphasis: string;
+  };
+  colors: {
+    primary: string;
+    secondary: string;
+    warning: string;
+    success: string;
+    error: string;
+  };
+  spacing: {
+    lineHeight: number;
+    paragraphSpacing: number;
+    sectionSpacing: number;
+  };
+}
+
+export interface PDFReportSection {
+  title: string;
+  content: string | string[];
+  style?: 'normal' | 'emphasis' | 'warning';
+  formatting?: Partial<PDFReportFormatting>;
+}
+
+export interface PDFReportStructure {
+  header: {
+    title: string;
+    subtitle: string;
+    logo?: string;
+    reportId: string;
+    date: Date;
+  };
+  physicianInfo: {
+    name: string;
+    specialization: string;
+    institution: string;
+    contact: string;
+  };
+  aiModelInfo: {
+    name: string;
+    version: string;
+    confidence: number;
+  };
+  scanInfo: {
+    type: string;
+    resolution?: string;
+    date: Date;
+    status: string;
+  };
+  findings: {
+    detected: boolean;
+    confidence: number;
+    count: number;
+    totalArea: number;
+    severity: 'mild' | 'moderate' | 'severe';
+    details: Array<{
+      id: number;
+      severity: string;
+      area: number;
+      location: [number, number];
+    }>;
+  };
+  recommendations: string[];
+  disclaimer: string;
+  footer: {
+    institution: string;
+    timestamp: Date;
+    contactInfo: string;
+  };
+  metadata: {
+    version: string;
+    generator: string;
+    created: Date;
+    modified: Date;
+    author: string;
+    keywords: string[];
+  };
+  styling: PDFStyles;
+  preview?: PDFPreviewState;
+  content: PDFContentBlock[];
+  rendering: {
+    pageSize: 'A4' | 'Letter' | 'Legal';
+    orientation: 'portrait' | 'landscape';
+    margins: {
+      top: number;
+      bottom: number;
+      left: number;
+      right: number;
+    };
+    template?: string;
+    watermark?: string;
+  };
+}
+
+// PDF Generation Status
+export interface PDFGenerationStatus {
+  status: 'idle' | 'generating' | 'completed' | 'error';
+  progress: number;
+  currentStep: string;
+  error?: string;
+  preview?: {
+    url: string;
+    blob?: Blob;
+    base64?: string;
+  };
 }
 
 // API Response Types
