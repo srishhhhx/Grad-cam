@@ -42,12 +42,6 @@ The core AI model is a U-Net++ architecture with EfficientNet-B5 encoder, specif
 - **Specificity**: 99.90% (true negative rate for healthy tissue)
 - **Precision**: 91.00% (positive predictive value)
 
-**Model Specifications:**
-- **Architecture**: U-Net++ with nested skip connections
-- **Encoder**: EfficientNet-B5 (pre-trained)
-- **Input Size**: 640x640 pixels
-- **Classes**: Binary segmentation (fibroid vs. background)
-- **Training Epochs**: 6 epochs (best model)
 
 For detailed model training results, architecture details, and comprehensive evaluation metrics, see: [UNET-model/README.md](UNET-model/README.md)
 
