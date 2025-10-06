@@ -23,7 +23,7 @@ The Uterine Fibroids Analyzer is an AI-powered medical imaging web application t
 ## 2. Demo Video
 
 <!-- Demo video will be added here -->
-*Demo video placeholder - to be added*
+[*Demo video placeholder - to be added*](https://github.com/user-attachments/assets/f90d4572-6981-4a74-b862-5c41dcc53863)
 
 ---
 
