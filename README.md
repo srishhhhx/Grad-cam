@@ -131,20 +131,20 @@ For detailed model training results, architecture details, and comprehensive eva
 UT_webapp 2/
 ├── frontend/                    # React TypeScript frontend
 │   ├── src/
-│   │   ├── components/          # Reusable UI components
-│   │   │   ├── ImageUpload.tsx     # Image upload component
-│   │   │   ├── PredictionViewer.tsx # Results visualization
-│   │   │   ├── GradCAMSlideshow.tsx # XAI analysis display
-│   │   │   ├── PatientInterface.tsx # Patient-specific UI
-│   │   │   ├── DoctorInterface.tsx  # Doctor-specific UI
-│   │   │   └── ChatInterface.tsx    # Chatbot integration
+│   │   ├── components/         
+│   │   │   ├── ImageUpload.tsx     
+│   │   │   ├── PredictionViewer.tsx 
+│   │   │   ├── GradCAMSlideshow.tsx 
+│   │   │   ├── PatientInterface.tsx 
+│   │   │   ├── DoctorInterface.tsx 
+│   │   │   └── ChatInterface.tsx    
 │   │   ├── utils/
 │   │   │   └── api.ts              # API communication layer
 │   │   ├── types/
-│   │   │   └── index.ts            # TypeScript type definitions
-│   │   └── App.tsx                 # Main application component
-│   ├── package.json                # Frontend dependencies
-│   └── vite.config.ts             # Vite configuration
+│   │   │   └── index.ts           
+│   │   └── App.tsx                 
+│   ├── package.json
+│   └── vite.config.ts            
 │
 ├── backend/                     # FastAPI Python backend
 │   ├── models/                  # AI model implementations
@@ -152,26 +152,26 @@ UT_webapp 2/
 │   │   ├── xai_analysis.py         # XAI analysis coordinator
 │   │   ├── gradcam_unet.py         # GradCAM implementation
 │   │   └── integrated_gradients.py # Integrated Gradients implementation
-│   ├── services/                # Business logic services
+│   ├── services/               
 │   │   └── chatbot_service.py      # Gemini AI chatbot service
-│   ├── utils/                   # Utility functions
+│   ├── utils/                  
 │   │   └── pdf_generator.py        # PDF report generation
 │   ├── main.py                     # FastAPI application entry point
-│   └── requirements.txt            # Python dependencies
+│   └── requirements.txt           
 │
 ├── UNET-model/                  # Model training and utilities
-│   ├── utils/                   # Training utilities
-│   │   ├── dataset.py              # Dataset handling
-│   │   ├── enhanced_dataloader.py  # Advanced data loading
-│   │   └── metrics.py              # Training metrics
-│   ├── train_unetpp.py            # Model training script
-│   ├── predict.py                 # Standalone prediction script
-│   └── predict_and_overlay.py     # Prediction with visualization
+│   ├── utils/                   
+│   │   ├── dataset.py              
+│   │   ├── enhanced_dataloader.py  
+│   │   └── metrics.py              
+│   ├── train_unetpp.py            
+│   ├── predict.py                
+│   └── predict_and_overlay.py    
 │
 ├── models_20250609_105424/      # Trained model weights
 │   └── best_model.pth             # Best performing model checkpoint
 │
-└── README.md                      # This file
+└── README.md                      
 ```
 
 ---
@@ -230,8 +230,12 @@ cd frontend
 npm run dev
 # Application will open at http://localhost:3000
 ```
+### **Step 5 : Download the Unet model from the provided link and place it in the models_20250609_105424 folder**:
 
-### **Step 5: Access the Application**
+Download the model from here: https://drive.google.com/file/d/1iGERcpQW3reazoFDjXG-QJnLMYNmoHAP/view?usp=sharing
+
+
+### **Step 6: Access the Application**
 - Open your browser and navigate to `http://localhost:3000`
 - Choose **Doctor Interface** for clinical analysis
 - Choose **Patient Interface** for patient-focused experience
@@ -295,19 +299,11 @@ npm run dev
 
 ## 10. Future Improvements
 
-### **Short-term Enhancements**
-
 #### **Performance Optimization**
 - **GPU Acceleration**: Implement CUDA support for faster model inference
 - **Model Quantization**: Reduce model size while maintaining accuracy
 - **Caching System**: Implement Redis for caching frequent analysis results
 - **CDN Integration**: Use content delivery networks for faster asset loading
-
-#### **User Experience**
-- **Batch Processing**: Allow multiple image uploads and batch analysis
-- **Real-time Collaboration**: Enable multiple doctors to review cases simultaneously
-- **Mobile App**: Develop native mobile applications for iOS and Android
-- **Offline Mode**: Enable basic functionality without internet connectivity
 
 ### **Advanced AI Features**
 
@@ -331,23 +327,3 @@ npm run dev
 - **EHR Integration**: Connect with Electronic Health Record systems
 - **PACS Integration**: Picture Archiving and Communication Systems support
 
-#### **Regulatory Compliance**
-- **HIPAA Compliance**: Ensure patient data privacy and security
-- **FDA Approval Process**: Prepare for medical device regulatory approval
-- **Clinical Validation**: Conduct extensive clinical trials and validation studies
-- **Audit Trails**: Comprehensive logging for regulatory compliance
-
-### **Platform & Infrastructure**
-
-#### **Scalability**
-- **Microservices Architecture**: Break down monolithic backend into microservices
-- **Container Orchestration**: Implement Kubernetes for scalable deployment
-- **Load Balancing**: Handle high traffic with intelligent load distribution
-- **Auto-scaling**: Automatic resource scaling based on demand
-
-
-#### **Clinical Analytics**
-- **Population Health Insights**: Aggregate analysis across patient populations
-- **Treatment Outcome Tracking**: Long-term patient outcome monitoring
-- **Research Data Export**: Support for clinical research and studies
-- **Quality Metrics**: Track diagnostic accuracy and clinical outcomes
