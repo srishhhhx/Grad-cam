@@ -1,5 +1,8 @@
 # Model files
-model/best_model.pth
+models_20250609_105424/best_model.pth
+*.pth
+best_model.pth
+
 # Python cache
 __pycache__/
 *.pyc

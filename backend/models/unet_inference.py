@@ -25,19 +25,14 @@ sys.path.append(str(Path(__file__).parent.parent.parent))
 
 # Import the existing prediction module
 try:
-    # Try different import paths
-    try:
-        from UNET_model.predict import load_model, predict_single_image
-        from UNET_model.utils.dataset import get_transforms
-    except ImportError:
-        # Try with relative path
-        import sys
-        import os
-        parent_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-        unet_model_path = os.path.join(parent_dir, 'UNET-model')
-        sys.path.insert(0, unet_model_path)
-        from predict import load_model, predict_single_image
-        from utils.dataset import get_transforms
+    # Import from UNET-model directory
+    import sys
+    import os
+    parent_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    unet_model_path = os.path.join(parent_dir, 'UNET-model')
+    sys.path.insert(0, unet_model_path)
+    from predict import load_model, predict_single_image
+    from utils.dataset import get_transforms
     PREDICT_MODULE_AVAILABLE = True
     print("✅ Prediction module imported successfully")
 except ImportError as e:

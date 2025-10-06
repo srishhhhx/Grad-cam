@@ -24,21 +24,9 @@ from PIL import Image
 sys.path.append(str(Path(__file__).parent.parent.parent))
 
 try:
-    # Try different import paths for XAI modules
-    try:
-        from gradcam_unet import run_gradcam_analysis
-        from integrated_gradients import run_integrated_gradients_analysis
-    except ImportError:
-        # Try with relative path to parent directory
-        import sys
-        import os
-
-        parent_dir = os.path.dirname(
-            os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-        )
-        sys.path.insert(0, parent_dir)
-        from gradcam_unet import run_gradcam_analysis
-        from integrated_gradients import run_integrated_gradients_analysis
+    # Import XAI modules from the same directory (backend/models/)
+    from .gradcam_unet import run_gradcam_analysis
+    from .integrated_gradients import run_integrated_gradients_analysis
 
     print("✅ XAI modules imported successfully")
     run_gradcam_analysis = run_gradcam_analysis
@@ -78,20 +66,23 @@ class XAIAnalysisEngine:
 
     def _find_best_model(self) -> str:
         """Find the best available model checkpoint."""
+        # Use the same paths as UNet inference engine
         possible_paths = [
-            "model/best_model.pth",
+            "models_20250609_105424/best_model.pth",
             "models_20250609_102709/best_model.pth",
             "models_20250609_103512/best_model.pth",
-            "../model/best_model.pth",
+            "../models_20250609_105424/best_model.pth",
             "../models_20250609_102709/best_model.pth",
             "../models_20250609_103512/best_model.pth",
+            "model/best_model.pth",
+            "../model/best_model.pth",
         ]
 
         for path in possible_paths:
             if os.path.exists(path):
                 return path
 
-        return "model/best_model.pth"
+        return "models_20250609_105424/best_model.pth"
 
     async def initialize(self):
         """Initialize the XAI analysis engine."""
@@ -159,6 +150,8 @@ class XAIAnalysisEngine:
 
         except Exception as e:
             print(f"❌ Error during XAI analysis: {e}")
+            import traceback
+            print(f"❌ Full traceback: {traceback.format_exc()}")
             return await self._generate_mock_analysis(image_path, prediction_data)
 
     async def analyze_gradcam_only(
@@ -205,6 +198,8 @@ class XAIAnalysisEngine:
 
         except Exception as e:
             print(f"❌ Error during GradCAM analysis: {e}")
+            import traceback
+            print(f"❌ Full traceback: {traceback.format_exc()}")
             return await self._generate_mock_analysis(image_path, prediction_data)
 
     async def analyze_integrated_gradients_only(
@@ -259,6 +254,8 @@ class XAIAnalysisEngine:
         """Run GradCAM analysis."""
         try:
             print(f"🔬 Starting GradCAM analysis for image: {image_path}")
+            print(f"📁 Model path: {self.model_path}")
+            print(f"📁 Model exists: {os.path.exists(self.model_path)}")
 
             # Run GradCAM analysis using the existing module
             results = run_gradcam_analysis(
@@ -310,7 +307,9 @@ class XAIAnalysisEngine:
             }
 
         except Exception as e:
-            print(f"Error in GradCAM analysis: {e}")
+            print(f"❌ Error in GradCAM analysis: {e}")
+            import traceback
+            print(f"❌ GradCAM traceback: {traceback.format_exc()}")
             return await self._generate_mock_gradcam()
 
     async def _run_integrated_gradients_analysis(

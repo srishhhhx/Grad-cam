@@ -33,7 +33,9 @@ os.environ['KMP_DUPLICATE_LIB_OK'] = 'TRUE'
 
 # Import model and data loading utilities
 import segmentation_models_pytorch as smp
-from enhanced_dataloader import get_1_to_3_augmentation_loaders
+import sys
+sys.path.append(str(Path(__file__).parent.parent.parent / "UNET-model"))
+from utils.enhanced_dataloader import get_1_to_3_augmentation_loaders
 import albumentations as A
 from albumentations.pytorch import ToTensorV2
 

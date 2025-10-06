@@ -8,9 +8,6 @@ import cv2
 from PIL import Image
 import argparse
 
-# Add the UNET-model directory to the path to import modules
-sys.path.append(os.path.join(os.path.dirname(__file__), "UNET-model"))
-
 import segmentation_models_pytorch as smp
 from utils.dataset import get_transforms
 
