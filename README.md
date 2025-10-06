@@ -10,7 +10,7 @@
 6. [Tech Stack](#6-tech-stack)
 7. [Project Structure](#7-project-structure)
 8. [How to Run the App](#8-how-to-run-the-app)
-9. [Difficulties Faced](#9-difficulties-faced)
+9. [Difficulties Faced](#9-challenges-i-faced)
 10. [Future Improvements](#10-future-improvements)
 
 ---
