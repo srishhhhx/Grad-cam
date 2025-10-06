@@ -41,3 +41,5 @@ UNET-model/.DS_Store
 py-files/
 md-files/
 
+package-lock.json
+package.json
