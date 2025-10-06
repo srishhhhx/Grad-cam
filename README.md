@@ -240,83 +240,42 @@ Download the model from here: https://drive.google.com/file/d/1iGERcpQW3reazoFDj
 
 ---
 
-## 9. Difficulties Faced
+## 9. Challenges I Faced
 
-### **Technical Challenges**
+Building this application involved several key technical challenges, from deep learning theory to robust software architecture.
 
-#### **Model Integration & Path Management**
-- **Issue**: Complex import path resolution between backend and UNET-model directories
-- **Solution**: Implemented dynamic path resolution and reorganized project structure for cleaner imports
-- **Impact**: Improved code maintainability and reduced import errors
+### **Bridging Theory and Practice**: 
+Moving beyond standard libraries, a deep dive into academic papers was essential to correctly implement U-Net++'s dense skip connections and adapt XAI methods for our specific segmentation task. 🧠
 
-#### **Large File Handling**
-- **Issue**: 358MB model file exceeded GitHub's 100MB limit, causing push failures
-- **Solution**: Implemented proper .gitignore patterns and Git history cleanup
-- **Impact**: Successful repository management without compromising model availability
+### **Navigating the Hyperparameter Maze**: 
+Achieving an 89.4% Dice Score required a rigorous hyperparameter tuning process, systematically balancing learning rates and loss functions to maximize segmentation accuracy while preventing overfitting.
 
-#### **Asynchronous Processing**
-- **Issue**: Long-running AI inference blocking the web interface
-- **Solution**: Implemented polling-based asynchronous processing with progress tracking
-- **Impact**: Improved user experience with real-time progress updates
+### **Architecting a Scalable Backend API**: 
+We engineered a clean, RESTful API in FastAPI to manage complex, asynchronous workflows. The design ensures flawless communication from initial upload and status polling to the final delivery of analysis results.
 
-#### **XAI Analysis Complexity**
-- **Issue**: GradCAM and Integrated Gradients analysis failing silently in production
-- **Solution**: Added comprehensive error handling, logging, and fallback mechanisms
-- **Impact**: Robust XAI analysis with detailed debugging capabilities
-
-### **UI/UX Challenges**
-
-#### **Cross-Platform Compatibility**
-- **Issue**: Inconsistent behavior across different browsers and devices
-- **Solution**: Implemented responsive design with extensive cross-browser testing
-- **Impact**: Consistent user experience across all platforms
-
-#### **Medical Data Visualization**
-- **Issue**: Complex medical imaging data difficult to interpret for non-experts
-- **Solution**: Created intuitive visualizations with explanatory tooltips and guides
-- **Impact**: Improved accessibility for both medical professionals and patients
-
-### **Performance & Security**
-
-#### **Memory Management**
-- **Issue**: Large model and image processing causing memory issues
-- **Solution**: Implemented efficient memory management and garbage collection
-- **Impact**: Stable performance even with large ultrasound images
-
-#### **Error Handling**
-- **Issue**: Cryptic error messages and poor error recovery
-- **Solution**: Comprehensive error handling with user-friendly messages
-- **Impact**: Better user experience and easier debugging
+### **Achieving a Non-Blocking UI**: 
+To prevent the UI from freezing during heavy AI inference, we implemented an asynchronous, polling-based backend. This lets the model process in the background, providing users with real-time progress updates for a responsive experience. 
 
 ---
 
 ## 10. Future Improvements
 
-#### **Performance Optimization**
-- **GPU Acceleration**: Implement CUDA support for faster model inference
-- **Model Quantization**: Reduce model size while maintaining accuracy
-- **Caching System**: Implement Redis for caching frequent analysis results
-- **CDN Integration**: Use content delivery networks for faster asset loading
+### **Next-Generation AI Capabilities**
 
-### **Advanced AI Features**
+Enhanced Diagnostic Insight: Evolve the model to perform multi-class segmentation (differentiating fibroid types) and analyze complex 3D ultrasound and MRI scans.
 
-#### **Model Improvements**
-- **Multi-class Segmentation**: Detect different types of fibroids and abnormalities
-- **3D Analysis**: Support for 3D ultrasound and MRI imaging
-- **Temporal Analysis**: Track fibroid growth over time with multiple scans
-- **Uncertainty Quantification**: Provide confidence intervals for predictions
+Temporal Progression Monitoring: Introduce a feature to automatically compare a patient's scans over time, tracking fibroid growth or shrinkage and providing predictive insights. 📈
 
-#### **Enhanced XAI**
-- **LIME Integration**: Add Local Interpretable Model-agnostic Explanations
-- **SHAP Values**: Implement SHapley Additive exPlanations for feature importance
-- **Counterfactual Explanations**: Show what changes would alter the diagnosis
-- **Interactive Explanations**: Allow users to explore different explanation methods
+Interactive & Trustworthy AI: Move beyond static heatmaps by implementing uncertainty quantification (a "confidence map") and interactive, counterfactual explanations for deeper model interrogation.
 
-### **Clinical Integration**
+### **Platform Scalability & Performance**
 
-#### **Healthcare System Integration**
-- **DICOM Support**: Full integration with medical imaging standards
-- **HL7 FHIR**: Healthcare data exchange protocol implementation
-- **EHR Integration**: Connect with Electronic Health Record systems
-- **PACS Integration**: Picture Archiving and Communication Systems support
+Accelerated AI Inference: Drastically reduce analysis time by implementing GPU support (CUDA) and model quantization, making real-time diagnosis feasible.
 
+System-Wide Optimization: Enhance responsiveness and reduce load times globally by integrating a Redis caching system for frequent results and a CDN for faster asset delivery. ⚡
+
+### **Deepening Clinical Integration**
+
+Seamless Hospital Workflow Integration: Natively support core medical imaging standards (DICOM) to integrate directly with hospital Picture Archiving and Communication Systems (PACS).
+
+Connecting to Patient Records: Enable secure data exchange with Electronic Health Record (EHR) systems using modern protocols like HL7 FHIR, embedding the tool within the clinical ecosystem.
