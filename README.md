@@ -17,7 +17,7 @@
 
 ## 1. Introduction
 
-The Uterine Fibroids Analyzer is an AI-powered medical imaging web application that assists healthcare professionals and patients in detecting and analyzing uterine fibroids from ultrasound images. The system combines advanced deep learning techniques(UNet,UNet++) with explainable AI(GradCam,Integrated Gradients) to provide accurate segmentation results and interpretable insights through an intuitive web interface(React,FastAPI).
+The Uterine Fibroids Analyzer is an AI-powered medical imaging web application that assists healthcare professionals and patients in detecting and analyzing uterine fibroids from ultrasound images. The system combines advanced deep learning techniques(U-Net++, Efficient B5-encoder) with explainable AI(GradCam, Integrated Gradients) to provide accurate segmentation results and interpretable insights through an intuitive web interface(React, FastAPI).
 
 ---
 
@@ -71,7 +71,6 @@ For detailed model training results, architecture details, and comprehensive eva
 - **Asynchronous Processing**: Non-blocking AI inference with polling-based status updates
 - **Progress Tracking**: Real-time progress indicators for all analysis stages
 - **Error Handling**: Robust error management with graceful fallbacks
-- **Responsive Design**: Mobile-first design that works across all devices
 - **Modern UI/UX**: Clean, intuitive interface with smooth animations and transitions
 
 ---
