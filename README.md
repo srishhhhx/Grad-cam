@@ -244,16 +244,16 @@ Download the model from here: https://drive.google.com/file/d/1iGERcpQW3reazoFDj
 
 Building this application involved several key technical challenges, from deep learning theory to robust software architecture.
 
-#### **Bridging Theory and Practice**: 
+#### ** - Bridging Theory and Practice**: 
 Moving beyond standard libraries, a deep dive into academic papers was essential to correctly implement U-Net++'s dense skip connections and adapt XAI methods for our specific segmentation task. 
 
-#### **Navigating the Hyperparameter Maze**: 
+#### ** - Navigating the Hyperparameter Maze**: 
 Achieving an 89.4% Dice Score required a rigorous hyperparameter tuning process, systematically balancing learning rates and loss functions to maximize segmentation accuracy while preventing overfitting.
 
-#### **Architecting a Scalable Backend API**: 
+#### ** - Architecting a Scalable Backend API**: 
 We engineered a clean, RESTful API in FastAPI to manage complex, asynchronous workflows. The design ensures flawless communication from initial upload and status polling to the final delivery of analysis results.
 
-#### **Achieving a Non-Blocking UI**: 
+#### ** - Achieving a Non-Blocking UI**: 
 To prevent the UI from freezing during heavy AI inference, we implemented an asynchronous, polling-based backend. This lets the model process in the background, providing users with real-time progress updates for a responsive experience. 
 
 ---
