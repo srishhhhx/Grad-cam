@@ -244,16 +244,16 @@ Download the model from here: https://drive.google.com/file/d/1iGERcpQW3reazoFDj
 
 Building this application involved several key technical challenges, from deep learning theory to robust software architecture.
 
-#### ** - Bridging Theory and Practice**: 
+#### **Bridging Theory and Practice**: 
 Moving beyond standard libraries, a deep dive into academic papers was essential to correctly implement U-Net++'s dense skip connections and adapt XAI methods for our specific segmentation task. 
 
-#### ** - Navigating the Hyperparameter Maze**: 
+#### **Navigating the Hyperparameter Maze**: 
 Achieving an 89.4% Dice Score required a rigorous hyperparameter tuning process, systematically balancing learning rates and loss functions to maximize segmentation accuracy while preventing overfitting.
 
-#### ** - Architecting a Scalable Backend API**: 
+#### **Architecting a Scalable Backend API**: 
 We engineered a clean, RESTful API in FastAPI to manage complex, asynchronous workflows. The design ensures flawless communication from initial upload and status polling to the final delivery of analysis results.
 
-#### ** - Achieving a Non-Blocking UI**: 
+#### **Achieving a Non-Blocking UI**: 
 To prevent the UI from freezing during heavy AI inference, we implemented an asynchronous, polling-based backend. This lets the model process in the background, providing users with real-time progress updates for a responsive experience. 
 
 ---
@@ -262,20 +262,20 @@ To prevent the UI from freezing during heavy AI inference, we implemented an asy
 
 #### **Next-Generation AI Capabilities**
 
-Enhanced Diagnostic Insight: Evolve the model to perform multi-class segmentation (differentiating fibroid types) and analyze complex 3D ultrasound and MRI scans.
+**Enhanced Diagnostic Insight:** Evolve the model to perform multi-class segmentation (differentiating fibroid types) and analyze complex 3D ultrasound and MRI scans.
 
-Temporal Progression Monitoring: Introduce a feature to automatically compare a patient's scans over time, tracking fibroid growth or shrinkage and providing predictive insights. 
+**Temporal Progression Monitoring:** Introduce a feature to automatically compare a patient's scans over time, tracking fibroid growth or shrinkage and providing predictive insights. 
 
-Interactive & Trustworthy AI: Move beyond static heatmaps by implementing uncertainty quantification (a "confidence map") and interactive, counterfactual explanations for deeper model interrogation.
+**Interactive & Trustworthy AI:** Move beyond static heatmaps by implementing uncertainty quantification (a "confidence map") and interactive, counterfactual explanations for deeper model interrogation.
 
 #### **Platform Scalability & Performance**
 
-Accelerated AI Inference: Drastically reduce analysis time by implementing GPU support (CUDA) and model quantization, making real-time diagnosis feasible.
+**Accelerated AI Inference:** Drastically reduce analysis time by implementing GPU support (CUDA) and model quantization, making real-time diagnosis feasible.
 
-System-Wide Optimization: Enhance responsiveness and reduce load times globally by integrating a Redis caching system for frequent results and a CDN for faster asset delivery. 
+**System-Wide Optimization:** Enhance responsiveness and reduce load times globally by integrating a Redis caching system for frequent results and a CDN for faster asset delivery. 
 
 #### **Deepening Clinical Integration**
 
-Seamless Hospital Workflow Integration: Natively support core medical imaging standards (DICOM) to integrate directly with hospital Picture Archiving and Communication Systems (PACS).
+**Seamless Hospital Workflow Integration:** Natively support core medical imaging standards (DICOM) to integrate directly with hospital Picture Archiving and Communication Systems (PACS).
 
-Connecting to Patient Records: Enable secure data exchange with Electronic Health Record (EHR) systems using modern protocols like HL7 FHIR, embedding the tool within the clinical ecosystem.
+**Connecting to Patient Records:** Enable secure data exchange with Electronic Health Record (EHR) systems using modern protocols like HL7 FHIR, embedding the tool within the clinical ecosystem.
