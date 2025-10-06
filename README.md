@@ -260,10 +260,14 @@ To prevent the UI from freezing during heavy AI inference, we implemented an asy
 
 ## 10. Future Improvements
 
-#### **Enhanced Diagnostic Insight:** Evolve the model to perform multi-class segmentation (differentiating fibroid types) and analyze complex 3D ultrasound and MRI scans.
+#### **Enhanced Diagnostic Insight:** 
+Evolve the model to perform multi-class segmentation (differentiating fibroid types) and analyze complex 3D ultrasound and MRI scans.
 
-#### **Temporal Progression Monitoring:** Introduce a feature to automatically compare a patient's scans over time, tracking fibroid growth or shrinkage and providing predictive insights. 
+#### **Temporal Progression Monitoring:** 
+Introduce a feature to automatically compare a patient's scans over time, tracking fibroid growth or shrinkage and providing predictive insights. 
 
-#### **Accelerated AI Inference:** Drastically reduce analysis time by implementing GPU support (CUDA) and model quantization, making real-time diagnosis feasible.
+#### **Accelerated AI Inference:** 
+Drastically reduce analysis time by implementing GPU support (CUDA) and model quantization, making real-time diagnosis feasible.
 
-#### **Deepening Clinical Integration:**  Natively support core medical imaging standards (DICOM) to integrate directly with hospital Picture Archiving and Communication Systems (PACS).
+#### **Deepening Clinical Integration:** 
+Natively support core medical imaging standards (DICOM) to integrate directly with hospital Picture Archiving and Communication Systems (PACS).
