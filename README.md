@@ -223,7 +223,7 @@ cd frontend
 npm run dev
 # Application will open at http://localhost:3000
 ```
-### **Step 5 : Download the Unet model from the provided link and place it in the models_20250609_105424 folder**:
+### **Step 5 : Download the Unet model from the provided link and replace it with the best_model.pth**:
 
 Download the model from here: https://drive.google.com/file/d/1iGERcpQW3reazoFDjXG-QJnLMYNmoHAP/view?usp=sharing
 
