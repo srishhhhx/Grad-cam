@@ -260,22 +260,10 @@ To prevent the UI from freezing during heavy AI inference, we implemented an asy
 
 ## 10. Future Improvements
 
-#### **Next-Generation AI Capabilities**
+#### **Enhanced Diagnostic Insight:** Evolve the model to perform multi-class segmentation (differentiating fibroid types) and analyze complex 3D ultrasound and MRI scans.
 
-**Enhanced Diagnostic Insight:** Evolve the model to perform multi-class segmentation (differentiating fibroid types) and analyze complex 3D ultrasound and MRI scans.
+#### **Temporal Progression Monitoring:** Introduce a feature to automatically compare a patient's scans over time, tracking fibroid growth or shrinkage and providing predictive insights. 
 
-**Temporal Progression Monitoring:** Introduce a feature to automatically compare a patient's scans over time, tracking fibroid growth or shrinkage and providing predictive insights. 
+#### **Accelerated AI Inference:** Drastically reduce analysis time by implementing GPU support (CUDA) and model quantization, making real-time diagnosis feasible.
 
-**Interactive & Trustworthy AI:** Move beyond static heatmaps by implementing uncertainty quantification (a "confidence map") and interactive, counterfactual explanations for deeper model interrogation.
-
-#### **Platform Scalability & Performance**
-
-**Accelerated AI Inference:** Drastically reduce analysis time by implementing GPU support (CUDA) and model quantization, making real-time diagnosis feasible.
-
-**System-Wide Optimization:** Enhance responsiveness and reduce load times globally by integrating a Redis caching system for frequent results and a CDN for faster asset delivery. 
-
-#### **Deepening Clinical Integration**
-
-**Seamless Hospital Workflow Integration:** Natively support core medical imaging standards (DICOM) to integrate directly with hospital Picture Archiving and Communication Systems (PACS).
-
-**Connecting to Patient Records:** Enable secure data exchange with Electronic Health Record (EHR) systems using modern protocols like HL7 FHIR, embedding the tool within the clinical ecosystem.
+#### **Deepening Clinical Integration:**  Natively support core medical imaging standards (DICOM) to integrate directly with hospital Picture Archiving and Communication Systems (PACS).
