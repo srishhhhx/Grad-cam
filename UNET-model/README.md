@@ -98,7 +98,7 @@ This report documents a comprehensive deep learning experiment for psoriasis les
 | **Precision** | 0.8096 ± 0.1331 | 0.8466 | [0.4889, 0.9846] | Positive predictive value |
 
 ### Performance Analysis
-- **Excellent Overall Performance**: Mean Dice score of 0.8666 indicates very good segmentation quality
+- **Overall Performance**: Mean Dice score of 0.8666 indicates very good segmentation quality
 - **High Sensitivity**: 0.9504 shows the model successfully identifies most psoriasis regions
 - **High Specificity**: 0.9446 indicates good ability to avoid false positives
 - **Moderate Precision Variation**: Higher standard deviation (0.1331) suggests some cases with more false positives
@@ -167,22 +167,6 @@ Precision = True Positives / (True Positives + False Positives)
 
 ---
 
-## 🔄 Training Dynamics Analysis
-
-### Learning Progression
-1. **Initial Phase (Epochs 1-5)**: Rapid learning with high loss reduction
-2. **Stabilization Phase (Epochs 6-15)**: Steady improvement in validation metrics
-3. **Fine-tuning Phase (Epochs 16-25)**: Gradual optimization to peak performance
-4. **Convergence Phase (Epochs 26-30)**: Stable performance near optimal
-
-### Key Training Observations
-- **No Overfitting**: Training and validation curves show healthy convergence
-- **Optimal Stopping**: Best model saved at epoch 25, preventing overtraining
-- **Balanced Performance**: High sensitivity and specificity indicate balanced learning
-- **Stable Convergence**: Final epochs show stable performance
-
----
-
 ## 🔧 Technical Implementation Details
 
 ### Data Augmentation
@@ -234,13 +218,6 @@ Precision = True Positives / (True Positives + False Positives)
 ✅ **Robust Architecture**: UNet++ with EfficientNet-b0 proven effective  
 ✅ **Clinical Readiness**: Metrics suitable for medical imaging applications  
 
-### Performance Rating
-| Aspect | Rating | Justification |
-|--------|--------|---------------|
-| **Overall Performance** | ⭐⭐⭐⭐⭐ | Dice > 0.85 is excellent for medical segmentation |
-| **Clinical Utility** | ⭐⭐⭐⭐⭐ | High sensitivity and specificity |
-| **Training Efficiency** | ⭐⭐⭐⭐⭐ | Fast convergence, no overfitting |
-| **Robustness** | ⭐⭐⭐⭐ | Good performance across test set |
 
 ### Recommendations
 1. **Deployment Ready**: Model performance suitable for clinical pilot studies

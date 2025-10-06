@@ -1,22 +1,23 @@
-# 🩺 Uterine Fibroids Analyzer Web Application
+# Uterine Fibroids Analyzer Web Application
 
-## 📋 Contents
+## Contents
 
 1. [Introduction](#1-introduction)
 2. [Demo Video](#2-demo-video)
-3. [Features](#3-features)
-4. [Architecture Diagram](#4-architecture-diagram)
-5. [Tech Stack](#5-tech-stack)
-6. [Project Structure](#6-project-structure)
-7. [How to Run the App](#7-how-to-run-the-app)
-8. [Difficulties Faced](#8-difficulties-faced)
-9. [Future Improvements](#9-future-improvements)
+3. [Model Summary](#3-model-summary)
+4. [Features](#4-features)
+5. [Architecture Diagram](#5-architecture-diagram)
+6. [Tech Stack](#6-tech-stack)
+7. [Project Structure](#7-project-structure)
+8. [How to Run the App](#8-how-to-run-the-app)
+9. [Difficulties Faced](#9-difficulties-faced)
+10. [Future Improvements](#10-future-improvements)
 
 ---
 
 ## 1. Introduction
 
-The Uterine Fibroids Analyzer is an AI-powered medical imaging web application that assists healthcare professionals and patients in detecting and analyzing uterine fibroids from ultrasound images. The system combines advanced deep learning techniques with explainable AI to provide accurate segmentation results and interpretable insights through an intuitive web interface.
+The Uterine Fibroids Analyzer is an AI-powered medical imaging web application that assists healthcare professionals and patients in detecting and analyzing uterine fibroids from ultrasound images. The system combines advanced deep learning techniques(UNet,UNet++) with explainable AI(GradCam,Integrated Gradients) to provide accurate segmentation results and interpretable insights through an intuitive web interface(React,FastAPI).
 
 ---
 
@@ -27,114 +28,139 @@ The Uterine Fibroids Analyzer is an AI-powered medical imaging web application t
 
 ---
 
-## 3. Features
+## 3. Model Summary
 
-### 🏥 **Doctor Interface**
-- **🖼️ Image Upload & Analysis**: Secure upload of patient ultrasound images with real-time AI-powered segmentation
-- **🔍 U-Net++ Segmentation**: State-of-the-art deep learning model for precise fibroid detection and boundary delineation
-- **🧠 Explainable AI (XAI)**: 
-  - **GradCAM Analysis**: Visual attention heatmaps showing model focus areas
-  - **Integrated Gradients**: Pixel-level attribution maps for detailed interpretability
-- **📊 Comprehensive Analytics**: Detailed metrics including Dice score, IoU, sensitivity, specificity, and precision
-- **📄 PDF Report Generation**: Professional medical reports with patient data, analysis results, and XAI visualizations
-- **📝 Clinical Notes**: Add personalized observations and recommendations to reports
-- **⚡ Real-time Processing**: Asynchronous analysis with progress tracking and status updates
+### U-Net++ Architecture with EfficientNet-B5 Encoder
 
-### 👩‍⚕️ **Patient Interface**
-- **📱 User-Friendly Upload**: Simplified interface for personal ultrasound scan uploads
-- **🤖 AI Health Chatbot**: Intelligent conversational assistant powered by Gemini AI for health guidance
-- **📋 Interactive Questionnaire**: Comprehensive health assessment with dynamic question flow
-- **📊 Personalized Reports**: Easy-to-understand analysis results with visual explanations
-- **💬 Health Consultation**: Get answers to fibroid-related questions and lifestyle recommendations
+The core AI model is a U-Net++ architecture with EfficientNet-B5 encoder, specifically trained for uterine fibroid segmentation from ultrasound images.
 
-### 🔧 **Technical Features**
-- **🔄 Asynchronous Processing**: Non-blocking AI inference with polling-based status updates
-- **📈 Progress Tracking**: Real-time progress indicators for all analysis stages
-- **🛡️ Error Handling**: Robust error management with graceful fallbacks
-- **📱 Responsive Design**: Mobile-first design that works across all devices
-- **🎨 Modern UI/UX**: Clean, intuitive interface with smooth animations and transitions
+**Key Performance Metrics:**
+- **Dice Score**: 0.8944 (89.44% segmentation accuracy)
+- **IoU (Intersection over Union)**: 0.8135 (81.35% overlap accuracy)
+- **Pixel Accuracy**: 99.72% (overall pixel classification accuracy)
+- **Sensitivity**: 89.11% (true positive rate for fibroid detection)
+- **Specificity**: 99.90% (true negative rate for healthy tissue)
+- **Precision**: 91.00% (positive predictive value)
+
+**Model Specifications:**
+- **Architecture**: U-Net++ with nested skip connections
+- **Encoder**: EfficientNet-B5 (pre-trained)
+- **Input Size**: 640x640 pixels
+- **Classes**: Binary segmentation (fibroid vs. background)
+- **Training Epochs**: 6 epochs (best model)
+
+For detailed model training results, architecture details, and comprehensive evaluation metrics, see: [UNET-model/README.md](UNET-model/README.md)
 
 ---
 
-## 4. Architecture Diagram
+## 4. Features
+
+### **Doctor Interface**
+- **Image Upload & Analysis**: Secure upload of patient ultrasound images with real-time AI-powered segmentation
+- **U-Net++ Segmentation**: State-of-the-art deep learning model for precise fibroid detection and boundary delineation
+- **Explainable AI (XAI)**: 
+  - **GradCAM Analysis**: Visual attention heatmaps showing model focus areas
+  - **Integrated Gradients**: Pixel-level attribution maps for detailed interpretability
+- **Comprehensive Analytics**: Detailed metrics including Dice score, IoU, sensitivity, specificity, and precision
+- **PDF Report Generation**: Professional medical reports with patient data, analysis results, and XAI visualizations
+- **Clinical Notes**: Add personalized observations and recommendations to reports
+- **Real-time Processing**: Asynchronous analysis with progress tracking and status updates
+
+### **Patient Interface**
+- **User-Friendly Upload**: Simplified interface for personal ultrasound scan uploads
+- **AI Health Chatbot**: Intelligent conversational assistant powered by Gemini AI for health guidance
+- **Interactive Questionnaire**: Comprehensive health assessment with dynamic question flow
+- **Personalized Reports**: Easy-to-understand analysis results with visual explanations
+- **Health Consultation**: Get answers to fibroid-related questions and lifestyle recommendations
+
+### **Technical Features**
+- **Asynchronous Processing**: Non-blocking AI inference with polling-based status updates
+- **Progress Tracking**: Real-time progress indicators for all analysis stages
+- **Error Handling**: Robust error management with graceful fallbacks
+- **Responsive Design**: Mobile-first design that works across all devices
+- **Modern UI/UX**: Clean, intuitive interface with smooth animations and transitions
+
+---
+
+## 5. Architecture Diagram
 
 <!-- Architecture diagram will be added here -->
 *Architecture diagram placeholder - to be added*
 
 ---
 
-## 5. Tech Stack
+## 6. Tech Stack
 
 ### **Frontend**
-- **⚛️ React 18** - Modern component-based UI framework
-- **📘 TypeScript** - Type-safe JavaScript for better development experience
-- **⚡ Vite** - Fast build tool and development server
-- **🎨 Tailwind CSS** - Utility-first CSS framework for rapid styling
-- **🎭 Framer Motion** - Production-ready motion library for React
-- **📡 Axios** - Promise-based HTTP client for API communication
+- React 18
+- TypeScript
+- Vite
+- Tailwind CSS
+- Framer Motion
+- Axios
 
 ### **Backend**
-- **🐍 Python 3.11** - Core programming language
-- **⚡ FastAPI** - Modern, fast web framework for building APIs
-- **🧠 PyTorch** - Deep learning framework for model inference
-- **🔬 Segmentation Models PyTorch** - Pre-trained segmentation architectures
-- **👁️ PyTorch GradCAM** - Explainable AI visualization library
-- **🖼️ OpenCV** - Computer vision and image processing
-- **📊 NumPy** - Numerical computing library
-- **🎨 Matplotlib** - Plotting and visualization
-- **📄 ReportLab** - PDF generation and document creation
-- **🤖 Google Gemini AI** - Conversational AI for chatbot functionality
+- Python 3.11
+- FastAPI
+- PyTorch
+- Segmentation Models PyTorch
+- PyTorch GradCAM
+- OpenCV
+- NumPy
+- Matplotlib
+- ReportLab
+- Google Gemini AI
 
 ### **AI/ML Stack**
-- **🏗️ U-Net++** - Advanced segmentation architecture
-- **🔧 EfficientNet-B5** - Efficient convolutional neural network encoder
-- **📐 Albumentations** - Image augmentation library
-- **🔍 GradCAM & GradCAM++** - Gradient-based attention visualization
-- **📊 Integrated Gradients** - Attribution method for model interpretability
+- U-Net++
+- EfficientNet-B5
+- Albumentations
+- GradCAM & GradCAM++
+- Integrated Gradients
 
 ### **Development Tools**
-- **📦 npm/pip** - Package managers
-- **🔄 Uvicorn** - ASGI server for FastAPI
-- **🛠️ Git** - Version control system
+- npm/pip
+- Uvicorn
+- Git
 
 ---
 
-## 6. Project Structure
+## 7. Project Structure
 
 ```
 UT_webapp 2/
-├── 📁 frontend/                    # React TypeScript frontend
-│   ├── 📁 src/
-│   │   ├── 📁 components/          # Reusable UI components
+├── frontend/                    # React TypeScript frontend
+│   ├── src/
+│   │   ├── components/          # Reusable UI components
 │   │   │   ├── ImageUpload.tsx     # Image upload component
 │   │   │   ├── PredictionViewer.tsx # Results visualization
 │   │   │   ├── GradCAMSlideshow.tsx # XAI analysis display
 │   │   │   ├── PatientInterface.tsx # Patient-specific UI
 │   │   │   ├── DoctorInterface.tsx  # Doctor-specific UI
 │   │   │   └── ChatInterface.tsx    # Chatbot integration
-│   │   ├── 📁 utils/
+│   │   ├── utils/
 │   │   │   └── api.ts              # API communication layer
-│   │   ├── 📁 types/
+│   │   ├── types/
 │   │   │   └── index.ts            # TypeScript type definitions
 │   │   └── App.tsx                 # Main application component
 │   ├── package.json                # Frontend dependencies
 │   └── vite.config.ts             # Vite configuration
 │
-├── 📁 backend/                     # FastAPI Python backend
-│   ├── 📁 models/                  # AI model implementations
+├── backend/                     # FastAPI Python backend
+│   ├── models/                  # AI model implementations
 │   │   ├── unet_inference.py       # U-Net segmentation engine
 │   │   ├── xai_analysis.py         # XAI analysis coordinator
 │   │   ├── gradcam_unet.py         # GradCAM implementation
 │   │   └── integrated_gradients.py # Integrated Gradients implementation
-│   ├── 📁 services/                # Business logic services
+│   ├── services/                # Business logic services
 │   │   └── chatbot_service.py      # Gemini AI chatbot service
-│   ├── 📁 utils/                   # Utility functions
+│   ├── utils/                   # Utility functions
 │   │   └── pdf_generator.py        # PDF report generation
 │   ├── main.py                     # FastAPI application entry point
 │   └── requirements.txt            # Python dependencies
 │
-├── 📁 UNET-model/                  # Model training and utilities
-│   ├── 📁 utils/                   # Training utilities
+├── UNET-model/                  # Model training and utilities
+│   ├── utils/                   # Training utilities
 │   │   ├── dataset.py              # Dataset handling
 │   │   ├── enhanced_dataloader.py  # Advanced data loading
 │   │   └── metrics.py              # Training metrics
@@ -142,7 +168,7 @@ UT_webapp 2/
 │   ├── predict.py                 # Standalone prediction script
 │   └── predict_and_overlay.py     # Prediction with visualization
 │
-├── 📁 models_20250609_105424/      # Trained model weights
+├── models_20250609_105424/      # Trained model weights
 │   └── best_model.pth             # Best performing model checkpoint
 │
 └── README.md                      # This file
@@ -150,13 +176,13 @@ UT_webapp 2/
 
 ---
 
-## 7. How to Run the App
+## 8. How to Run the App
 
 ### **Prerequisites**
-- 🐍 Python 3.11 or higher
-- 📦 Node.js 18 or higher
-- 💾 At least 4GB RAM (for model inference)
-- 🖥️ Modern web browser (Chrome, Firefox, Safari, Edge)
+- Python 3.11 or higher
+- Node.js 18 or higher
+- At least 4GB RAM (for model inference)
+- Modern web browser (Chrome, Firefox, Safari, Edge)
 
 ### **Step 1: Clone the Repository**
 ```bash
@@ -206,20 +232,20 @@ npm run dev
 ```
 
 ### **Step 5: Access the Application**
-- 🌐 Open your browser and navigate to `http://localhost:3000`
-- 👩‍⚕️ Choose **Doctor Interface** for clinical analysis
-- 👤 Choose **Patient Interface** for patient-focused experience
-- 📤 Upload an ultrasound image to begin analysis
+- Open your browser and navigate to `http://localhost:3000`
+- Choose **Doctor Interface** for clinical analysis
+- Choose **Patient Interface** for patient-focused experience
+- Upload an ultrasound image to begin analysis
 
 ### **API Documentation**
-- 📚 FastAPI auto-generated docs: `http://localhost:8000/docs`
-- 🔍 Alternative docs: `http://localhost:8000/redoc`
+- FastAPI auto-generated docs: `http://localhost:8000/docs`
+- Alternative docs: `http://localhost:8000/redoc`
 
 ---
 
-## 8. Difficulties Faced
+## 9. Difficulties Faced
 
-### **🔧 Technical Challenges**
+### **Technical Challenges**
 
 #### **Model Integration & Path Management**
 - **Issue**: Complex import path resolution between backend and UNET-model directories
@@ -241,7 +267,7 @@ npm run dev
 - **Solution**: Added comprehensive error handling, logging, and fallback mechanisms
 - **Impact**: Robust XAI analysis with detailed debugging capabilities
 
-### **🎨 UI/UX Challenges**
+### **UI/UX Challenges**
 
 #### **Cross-Platform Compatibility**
 - **Issue**: Inconsistent behavior across different browsers and devices
@@ -253,7 +279,7 @@ npm run dev
 - **Solution**: Created intuitive visualizations with explanatory tooltips and guides
 - **Impact**: Improved accessibility for both medical professionals and patients
 
-### **🔒 Performance & Security**
+### **Performance & Security**
 
 #### **Memory Management**
 - **Issue**: Large model and image processing causing memory issues
@@ -267,9 +293,9 @@ npm run dev
 
 ---
 
-## 9. Future Improvements
+## 10. Future Improvements
 
-### **🚀 Short-term Enhancements**
+### **Short-term Enhancements**
 
 #### **Performance Optimization**
 - **GPU Acceleration**: Implement CUDA support for faster model inference
@@ -283,7 +309,7 @@ npm run dev
 - **Mobile App**: Develop native mobile applications for iOS and Android
 - **Offline Mode**: Enable basic functionality without internet connectivity
 
-### **🔬 Advanced AI Features**
+### **Advanced AI Features**
 
 #### **Model Improvements**
 - **Multi-class Segmentation**: Detect different types of fibroids and abnormalities
@@ -297,7 +323,7 @@ npm run dev
 - **Counterfactual Explanations**: Show what changes would alter the diagnosis
 - **Interactive Explanations**: Allow users to explore different explanation methods
 
-### **🏥 Clinical Integration**
+### **Clinical Integration**
 
 #### **Healthcare System Integration**
 - **DICOM Support**: Full integration with medical imaging standards
@@ -311,7 +337,7 @@ npm run dev
 - **Clinical Validation**: Conduct extensive clinical trials and validation studies
 - **Audit Trails**: Comprehensive logging for regulatory compliance
 
-### **🌐 Platform & Infrastructure**
+### **Platform & Infrastructure**
 
 #### **Scalability**
 - **Microservices Architecture**: Break down monolithic backend into microservices
@@ -319,33 +345,6 @@ npm run dev
 - **Load Balancing**: Handle high traffic with intelligent load distribution
 - **Auto-scaling**: Automatic resource scaling based on demand
 
-#### **Database & Storage**
-- **PostgreSQL Integration**: Replace in-memory storage with robust database
-- **Cloud Storage**: Implement AWS S3 or Google Cloud Storage for images
-- **Data Backup**: Automated backup and disaster recovery systems
-- **Data Analytics**: Implement analytics dashboard for usage insights
-
-### **🔐 Security & Privacy**
-
-#### **Advanced Security**
-- **Multi-factor Authentication**: Enhanced user authentication systems
-- **Role-based Access Control**: Granular permissions for different user types
-- **End-to-end Encryption**: Secure data transmission and storage
-- **Security Auditing**: Regular security assessments and penetration testing
-
-#### **Privacy Features**
-- **Data Anonymization**: Automatic removal of patient identifiers
-- **Consent Management**: Comprehensive patient consent tracking
-- **Data Retention Policies**: Automated data lifecycle management
-- **Privacy Dashboard**: User control over personal data usage
-
-### **📊 Analytics & Monitoring**
-
-#### **Business Intelligence**
-- **Usage Analytics**: Detailed insights into application usage patterns
-- **Performance Monitoring**: Real-time application performance tracking
-- **Error Tracking**: Comprehensive error monitoring and alerting
-- **A/B Testing**: Experiment with different UI/UX approaches
 
 #### **Clinical Analytics**
 - **Population Health Insights**: Aggregate analysis across patient populations
