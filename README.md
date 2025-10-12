@@ -78,7 +78,6 @@ For detailed model training results, architecture details, and comprehensive eva
 ## 5. Architecture Diagram
 
 <!-- Architecture diagram will be added here -->
-*Architecture diagram placeholder - to be added*
 ![Archdiag](assets/arch/arch1.png)
 
 ---
